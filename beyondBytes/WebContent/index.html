@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Beyond Bytes</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="plugins/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        
+	</head>
+
+
+	<body>
+		<div ng-app="editorApp" ng-controller="editController" 
+		style='overflow-x:hidden'>
+			<div class="jumbotron" style="margin:0px;padding:1vw" >
+			  <h3>Online Editor</h3>      
+			 </div>
+			<div class="container " style="padding:10px" >
+			<div class="form-inline">
+		      <label for="bgcolor">Font color</label>
+		      <input type="color" ng-model="obj.fontcolor" autofocus ng-blur=style(obj) class="form-control" id="fontcolor">
+		      <label for="weight">Font weight</label>
+		      <input type="number" ng-model="obj.weight" ng-blur=style(obj) class="form-control" id="weight">
+		      <label for="fontcolor">Font color</label>
+		      <input type="text"  ng-model="obj.color" ng-blur=style(obj) class="form-control" id="color">
+		      <button type="button" class="btn btn-success col-xs-12" style="margin-top:10px"
+				ng-click=showEditor()>Create blog</button>
+			</div>
+		    </div>
+		    
+			<div ng-style=customStyle 	class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  >
+				 <div class="panel panel-default" ng-show="editorPanel"
+				 		text-angular ng-model="editor" name="demo-editor"
+						     ta-text-editor-class="border-around" ta-html-editor-class="border-around">
+				</div>
+				<div ng-show="htmlPanel">
+				 <h3>The raw value: </h3>
+						{{editor}}
+						<div ng-bind-html="editor"></div>
+				</div>
+				<div class="center-block text-center" style="padding-bottom:20px">
+						<button type="button" class="btn btn-default"
+						ng-show=htmlPanel ng-click="showEditor()">Edit</button>
+						<button type="button" class="btn btn-primary"
+						ng-show=editorPanel ng-click="showRawData()">Save</button>
+					</div>
+			</div>
+		</div><script type="text/javascript" src="plugins/jquery.min.js"></script>
+		<script type="text/javascript" src="plugins/angular.min.js"></script>
+		<script type="text/javascript" src="plugins/textAngular.min.js"></script>
+		<script type="text/javascript" src="plugins/angular-route.min.js"></script>
+		<script type="text/javascript" src="plugins/bootstrap.min.js"></script>
+		<script type="text/javascript" src="plugins/ui-bootstrap-tpls-0.10.0.js"></script>
+		<script type="text/javascript" src="controller/app.js"></script>
+	</body>
+</html>
+
